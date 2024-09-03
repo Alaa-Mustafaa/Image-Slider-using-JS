@@ -1,16 +1,21 @@
 var images=document.querySelectorAll('.image-container');
 var dots=document.querySelectorAll('.fa-circle');
-var currentIndex = 0;
+var index = 0;
 
 // show first image only
-function ShowSlides(){
+function ShowFirstSlide(){
         dots[0].style.color='blue';
         images[0].style.display='flex';
 }
-ShowSlides()
+ShowFirstSlide()
 
-// Function to update the slides and dots
-function updateSlider(index) {
+// show each image and its dot
+function showSlide(index) {
+    if(index > 3){
+        index=0
+    }else if(index < 0){
+        index=3;
+    }
     for (var i = 0; i < dots.length; i++) {
         dots[i].style.color = 'grey';
         images[i].style.display = 'none';
@@ -19,37 +24,54 @@ function updateSlider(index) {
     images[index].style.display = 'flex';
 }
 
-// Function for dot navigation
-function dot(n) {
-    currentIndex = n; // Update the current index
-    updateSlider(n);
+// click on dots 
+function dot(index) {
+    showSlide(index);
 }
 
-// Function for arrow navigation
+// click on arrows
 function nextImage(number, index) {
-    currentIndex = (number + index)
-    updateSlider(currentIndex);
+    index = (number + index)
+    showSlide(index);
 }
 
-// Function to auto-cycle through images every 2 seconds
+// Automatic slider
 function startAutoSlide() {
     interval=setInterval(function() {
-        currentIndex = (currentIndex + 1) 
-        if(currentIndex > 3){
-            currentIndex=0
-        }else if(currentIndex < 0){
-            currentIndex=3;
+        index = (index + 1) 
+        if(index > 3){
+            index=0
+        }else if(index < 0){
+            index=3;
         }
-        updateSlider(currentIndex);
+        showSlide(index);
     }, 2500); 
 }
-
 startAutoSlide();
 
 function stop(){
     clearInterval(interval)
 }
+function swipe(event,index){
+  
+let startX=0;
+let endX = 0;   
+document.addEventListener('touchstart', function(event) {
+    startX = event.touches[0].clientX; 
+});
+document.addEventListener('touchend', function(event) {
+    endX = event.changedTouches[0].clientX; 
 
-function m(event){
-    updateSlider(0)
+    // to know the user swipes the screen left to right or right to left 
+    // if distance is greater than zero => swipe left to right 
+    var distance = endX - startX;
+    if (distance > 0) {
+        showSlide(index-1)
+    } else if (distance < 0) {  
+        // if distance is greater than zero => swipe right to left
+        showSlide(index+1)
+    }
+});
+
 }
+
