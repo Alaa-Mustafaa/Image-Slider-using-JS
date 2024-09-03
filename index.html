@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>Image Slider</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script
@@ -18,7 +18,7 @@
       <h1>Image Slider</h1>
 
       <div class="slider">
-        <div class="image-container">
+        <div class="image-container" onmouseover="stop()" onmouseout="startAutoSlide()" ontouchmove="m(event)">
           <img
             src="assets/images/beautiful-shot-forest-with-tall-green-trees.jpg"
             alt="image-slider"
@@ -26,10 +26,10 @@
             id="lolo"
           />
           <i class="fa-solid fa-circle-right arrow" onclick="nextImage(1,0) "></i>
-          <i class="fa-solid fa-circle-left arrow" onclick="nextImage(-1,0)"></i>
+          <i class="fa-solid fa-circle-left arrow" onclick="nextImage(0,3)"></i>
         </div>
 
-        <div class="image-container">
+        <div class="image-container" onmouseover="stop()" onmouseout="startAutoSlide()" ontouchmove="m(event)">
           <img
             src="assets/images/breathtaking-view-snowy-mountains-cloudy-sky-patagonia-chile.jpg"
             alt="image-slider"
@@ -38,7 +38,7 @@
           <i class="fa-solid fa-circle-left arrow" onclick="nextImage(-1,1)"></i>
         </div>
 
-        <div class="image-container">
+        <div class="image-container" onmouseover="stop()" onmouseout="startAutoSlide()" ontouchmove="m(event)">
           <img
             src="assets/images/calming-scene-with-photorealistic-idyllic-sea-landscape.jpg"
             alt="image-slider"
@@ -47,12 +47,12 @@
           <i class="fa-solid fa-circle-left arrow" onclick="nextImage(-1,2)"></i>
         </div>
 
-        <div class="image-container">
+        <div class="image-container" onmouseover="stop()" onmouseout="startAutoSlide()" ontouchmove="m(event)">
           <img
             src="assets/images/cascade-boat-clean-china-natural-rural.jpg"
             alt="image-slider"
           />
-          <i class="fa-solid fa-circle-right arrow" onclick="nextImage(1,3) "></i>
+          <i class="fa-solid fa-circle-right arrow" onclick="nextImage(0,0) "></i>
           <i class="fa-solid fa-circle-left arrow" onclick="nextImage(-1,3)"></i>
         </div>
       </div>
